@@ -7,7 +7,7 @@ from slowapi.errors import RateLimitExceeded
 
 from app.config import get_settings
 from app.rate_limit import limiter
-from app.routers import auth
+from app.routers import auth, products, shipping
 
 
 def create_app() -> FastAPI:
@@ -27,6 +27,8 @@ def create_app() -> FastAPI:
     )
 
     app.include_router(auth.router)
+    app.include_router(products.router)
+    app.include_router(shipping.router)
 
     @app.get("/health")
     def health() -> dict[str, str]:
