@@ -6,6 +6,7 @@ from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.database import Base
 from app.models.base import new_uuid, utcnow
+from app.models.product import Product
 from app.models.user import User
 
 ORDER_STATUSES = ("pending", "paid", "shipped", "delivered", "canceled")
@@ -61,3 +62,4 @@ class OrderItem(Base):
     qty: Mapped[int] = mapped_column(Integer)
 
     order: Mapped[Order] = relationship(back_populates="items")
+    product: Mapped[Product] = relationship()
