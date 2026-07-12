@@ -1,0 +1,719 @@
+[
+  {
+    "id": "coral-fantasy",
+    "name": "Coral Fantasy",
+    "brand": "Valentino Uomo",
+    "category": "multi",
+    "tag": null,
+    "tone": "bronce",
+    "image": "/perfumes/coral-fantasy-1.webp",
+    "gallery": [
+      "/perfumes/coral-fantasy-1.webp",
+      "/perfumes/coral-fantasy-2.webp",
+      "/perfumes/coral-fantasy-3.webp"
+    ],
+    "price": 130,
+    "rating": 4.6,
+    "reviews": 96,
+    "isNew": true,
+    "desc": {
+      "en": "Red apple and cardamom over a base of tobacco and vetiver. Fruity and elegant, for any occasion.",
+      "es": "Manzana roja y cardamomo sobre un fondo de tabaco y vetiver. Afrutado y elegante, para cualquier momento."
+    },
+    "notes": {
+      "top": {
+        "en": "Red apple · cardamom · bergamot",
+        "es": "Manzana roja · cardamomo · bergamota"
+      },
+      "heart": {
+        "en": "Lavender · geranium · clary sage",
+        "es": "Lavanda · geranio · salvia sclarea"
+      },
+      "base": {
+        "en": "Tobacco · patchouli · vetiver",
+        "es": "Tabaco · pachulí · vetiver"
+      }
+    }
+  },
+  {
+    "id": "valentino-intense",
+    "name": "Uomo Intense",
+    "brand": "Valentino",
+    "category": "multi",
+    "tag": null,
+    "tone": "noir",
+    "image": "/perfumes/valentino-intense-1.webp",
+    "gallery": [
+      "/perfumes/valentino-intense-1.webp",
+      "/perfumes/valentino-intense-2.webp",
+      "/perfumes/valentino-intense-3.webp"
+    ],
+    "price": 130,
+    "rating": 4.5,
+    "reviews": 74,
+    "desc": {
+      "en": "Vanilla wrapped in lavender and vetiver. The deepest, most sensual take on Uomo Born in Roma.",
+      "es": "Vainilla envuelta en lavanda y vetiver. La versión más profunda y sensual del Uomo Born in Roma."
+    },
+    "notes": {
+      "top": {
+        "en": "Vanilla",
+        "es": "Vainilla"
+      },
+      "heart": {
+        "en": "Lavender",
+        "es": "Lavanda"
+      },
+      "base": {
+        "en": "Vetiver",
+        "es": "Vetiver"
+      }
+    }
+  },
+  {
+    "id": "myslf-le-parfum",
+    "name": "MYSLF Le Parfum",
+    "brand": "Yves Saint Laurent",
+    "category": "multi",
+    "tag": null,
+    "tone": "noir",
+    "image": "/perfumes/myslf-le-parfum-1.webp",
+    "gallery": [
+      "/perfumes/myslf-le-parfum-1.webp",
+      "/perfumes/myslf-le-parfum-2.webp",
+      "/perfumes/myslf-le-parfum-3.webp"
+    ],
+    "price": 135,
+    "rating": 4.7,
+    "reviews": 61,
+    "isNew": true,
+    "desc": {
+      "en": "Creamy orange blossom, black pepper and bourbon vanilla. A modern, magnetic floral.",
+      "es": "Azahar cremoso, pimienta negra y vainilla bourbon. Floral moderno y magnético."
+    },
+    "notes": {
+      "top": {
+        "en": "Black pepper",
+        "es": "Pimienta negra"
+      },
+      "heart": {
+        "en": "Orange blossom",
+        "es": "Azahar"
+      },
+      "base": {
+        "en": "Bourbon vanilla · amber · patchouli",
+        "es": "Vainilla bourbon · ámbar · pachulí"
+      }
+    }
+  },
+  {
+    "id": "bleu-de-chanel-parfum",
+    "name": "Bleu de Chanel Parfum",
+    "brand": "Chanel",
+    "category": "multi",
+    "tag": null,
+    "tone": "cian",
+    "image": "/perfumes/bleu-de-chanel-parfum-1.webp",
+    "gallery": [
+      "/perfumes/bleu-de-chanel-parfum-1.webp",
+      "/perfumes/bleu-de-chanel-parfum-2.webp",
+      "/perfumes/bleu-de-chanel-parfum-3.webp"
+    ],
+    "price": 140,
+    "rating": 4.9,
+    "reviews": 342,
+    "isBest": true,
+    "desc": {
+      "en": "Citrus and mint landing on sandalwood, cedar and amber. Chanel’s deep blue, more intense.",
+      "es": "Cítricos y menta que aterrizan en sándalo, cedro y ámbar. El azul absoluto de Chanel, más intenso."
+    },
+    "notes": {
+      "top": {
+        "en": "Lemon · bergamot · mint",
+        "es": "Limón · bergamota · menta"
+      },
+      "heart": {
+        "en": "Lavender · pineapple · geranium",
+        "es": "Lavanda · piña · geranio"
+      },
+      "base": {
+        "en": "Sandalwood · cedar · amber · tonka bean",
+        "es": "Sándalo · cedro · ámbar · haba tonka"
+      }
+    }
+  },
+  {
+    "id": "armani-code-parfum",
+    "name": "Armani Code Parfum",
+    "brand": "Giorgio Armani",
+    "category": "multi",
+    "tag": null,
+    "tone": "noir",
+    "image": "/perfumes/armani-code-parfum-1.webp",
+    "gallery": [
+      "/perfumes/armani-code-parfum-1.webp",
+      "/perfumes/armani-code-parfum-2.webp",
+      "/perfumes/armani-code-parfum-3.webp"
+    ],
+    "price": 125,
+    "rating": 4.6,
+    "reviews": 118,
+    "desc": {
+      "en": "Bergamot, iris and tonka bean. Woody aromatic, refined and very sensual.",
+      "es": "Bergamota, iris y haba tonka. Amaderado aromático, sobrio y muy sensual."
+    },
+    "notes": {
+      "top": {
+        "en": "Bergamot · bergamot leaf",
+        "es": "Bergamota · hoja de bergamota"
+      },
+      "heart": {
+        "en": "Iris · aldehydes · clary sage",
+        "es": "Iris · aldehídos · salvia sclarea"
+      },
+      "base": {
+        "en": "Tonka bean · cedar",
+        "es": "Haba tonka · cedro"
+      }
+    }
+  },
+  {
+    "id": "polo-67",
+    "name": "Polo 67",
+    "brand": "Ralph Lauren",
+    "category": "daily",
+    "tag": null,
+    "tone": "cian",
+    "image": "/perfumes/polo-67-1.webp",
+    "gallery": [
+      "/perfumes/polo-67-1.webp",
+      "/perfumes/polo-67-2.webp",
+      "/perfumes/polo-67-3.webp"
+    ],
+    "price": 120,
+    "rating": 4.4,
+    "reviews": 39,
+    "isNew": true,
+    "desc": {
+      "en": "Pineapple and bergamot over sage, juniper and vetiver. Fresh, green and sporty.",
+      "es": "Piña y bergamota sobre salvia, enebro y vetiver. Fresco, verde y deportivo."
+    },
+    "notes": {
+      "top": {
+        "en": "Pineapple · bergamot · lemon",
+        "es": "Piña · bergamota · limón"
+      },
+      "heart": {
+        "en": "Sage · juniper · rosehip",
+        "es": "Salvia · enebro · rosa mosqueta"
+      },
+      "base": {
+        "en": "Vetiver · patchouli · goldenrod",
+        "es": "Vetiver · pachulí · vara de oro"
+      }
+    }
+  },
+  {
+    "id": "explorer",
+    "name": "Explorer",
+    "brand": "Montblanc",
+    "category": "daily",
+    "tag": null,
+    "tone": "noir",
+    "image": "/perfumes/explorer-1.webp",
+    "gallery": [
+      "/perfumes/explorer-1.webp",
+      "/perfumes/explorer-2.webp",
+      "/perfumes/explorer-3.webp"
+    ],
+    "price": 120,
+    "oldPrice": 150,
+    "rating": 4.5,
+    "reviews": 132,
+    "desc": {
+      "en": "Italian bergamot, Haitian vetiver and patchouli. An adventurous woody with big sillage.",
+      "es": "Bergamota de Italia, vetiver de Haití y pachulí. Amaderado aventurero de gran estela."
+    },
+    "notes": {
+      "top": {
+        "en": "Bergamot · pink pepper",
+        "es": "Bergamota · pimienta rosa"
+      },
+      "heart": {
+        "en": "Clary sage · vetiver",
+        "es": "Salvia · vetiver"
+      },
+      "base": {
+        "en": "Haitian vetiver · patchouli · leather",
+        "es": "Vetiver de Haití · pachulí · cuero"
+      }
+    }
+  },
+  {
+    "id": "luna-rossa-carbon",
+    "name": "Luna Rossa Carbon",
+    "brand": "Prada",
+    "category": "daily",
+    "tag": null,
+    "tone": "titanio",
+    "image": "/perfumes/luna-rossa-carbon-1.webp",
+    "gallery": [
+      "/perfumes/luna-rossa-carbon-1.webp",
+      "/perfumes/luna-rossa-carbon-2.webp",
+      "/perfumes/luna-rossa-carbon-3.webp"
+    ],
+    "price": 110,
+    "rating": 4.4,
+    "reviews": 88,
+    "desc": {
+      "en": "Metallic lavender, pepper and ambroxan. A clean, high-tech mineral fougère.",
+      "es": "Lavanda metálica, pimienta y ambroxan. Fougère mineral, limpio y tecnológico."
+    },
+    "notes": {
+      "top": {
+        "en": "Bergamot · lavender",
+        "es": "Bergamota · lavanda"
+      },
+      "heart": {
+        "en": "Pepper · mineral notes",
+        "es": "Pimienta · notas minerales"
+      },
+      "base": {
+        "en": "Ambroxan · patchouli",
+        "es": "Ambroxan · pachulí"
+      }
+    }
+  },
+  {
+    "id": "acqua-di-gio-parfum",
+    "name": "Acqua di Giò Parfum",
+    "brand": "Giorgio Armani",
+    "category": "daily",
+    "tag": null,
+    "tone": "titanio",
+    "image": "/perfumes/acqua-di-gio-parfum-1.webp",
+    "gallery": [
+      "/perfumes/acqua-di-gio-parfum-1.webp",
+      "/perfumes/acqua-di-gio-parfum-2.webp",
+      "/perfumes/acqua-di-gio-parfum-3.webp"
+    ],
+    "price": 125,
+    "rating": 4.8,
+    "reviews": 265,
+    "isBest": true,
+    "desc": {
+      "en": "Marine notes, sage and incense. The most mature, characterful take on the aquatic.",
+      "es": "Notas marinas, salvia e incienso. El acuático más maduro y con carácter."
+    },
+    "notes": {
+      "top": {
+        "en": "Marine notes · bergamot",
+        "es": "Notas marinas · bergamota"
+      },
+      "heart": {
+        "en": "Rosemary · clary sage · geranium",
+        "es": "Romero · salvia sclarea · geranio"
+      },
+      "base": {
+        "en": "Incense · patchouli",
+        "es": "Incienso · pachulí"
+      }
+    }
+  },
+  {
+    "id": "sauvage-edp",
+    "name": "Sauvage EDP",
+    "brand": "Dior",
+    "category": "daily",
+    "tag": null,
+    "tone": "cian",
+    "image": "/perfumes/sauvage-edp-1.webp",
+    "gallery": [
+      "/perfumes/sauvage-edp-1.webp",
+      "/perfumes/sauvage-edp-2.webp",
+      "/perfumes/sauvage-edp-3.webp"
+    ],
+    "price": 120,
+    "rating": 4.9,
+    "reviews": 410,
+    "isBest": true,
+    "desc": {
+      "en": "Bergamot, Sichuan pepper and ambroxan with a vanilla base. Powerful and versatile.",
+      "es": "Bergamota, pimienta de Sichuan y ambroxan con un fondo de vainilla. Potente y versátil."
+    },
+    "notes": {
+      "top": {
+        "en": "Bergamot",
+        "es": "Bergamota"
+      },
+      "heart": {
+        "en": "Sichuan pepper · lavender · star anise · nutmeg",
+        "es": "Pimienta de Sichuan · lavanda · anís estrellado · nuez moscada"
+      },
+      "base": {
+        "en": "Ambroxan · vanilla",
+        "es": "Ambroxan · vainilla"
+      }
+    }
+  },
+  {
+    "id": "victory-elixir",
+    "name": "Invictus Victory Elixir",
+    "brand": "Paco Rabanne",
+    "category": "night",
+    "tag": null,
+    "tone": "cian",
+    "image": "/perfumes/victory-elixir-1.webp",
+    "gallery": [
+      "/perfumes/victory-elixir-1.webp",
+      "/perfumes/victory-elixir-2.webp",
+      "/perfumes/victory-elixir-3.webp"
+    ],
+    "price": 130,
+    "rating": 4.7,
+    "reviews": 176,
+    "isBest": true,
+    "desc": {
+      "en": "Lavender, cardamom and incense over vanilla and tonka. Sweet, spicy and addictive.",
+      "es": "Lavanda, cardamomo e incienso sobre vainilla y tonka. Dulce, especiado y adictivo."
+    },
+    "notes": {
+      "top": {
+        "en": "Lavender · cardamom · black pepper",
+        "es": "Lavanda · cardamomo · pimienta negra"
+      },
+      "heart": {
+        "en": "Incense · patchouli",
+        "es": "Incienso · pachulí"
+      },
+      "base": {
+        "en": "Vanilla · tonka bean",
+        "es": "Vainilla · haba tonka"
+      }
+    }
+  },
+  {
+    "id": "althair",
+    "name": "Althaïr",
+    "brand": "Parfums de Marly",
+    "category": "night",
+    "tag": "niche",
+    "tone": "bronce",
+    "image": "/perfumes/althair-1.webp",
+    "gallery": [
+      "/perfumes/althair-1.webp",
+      "/perfumes/althair-2.webp",
+      "/perfumes/althair-3.webp"
+    ],
+    "price": 320,
+    "rating": 4.8,
+    "reviews": 54,
+    "desc": {
+      "en": "Creamy vanilla, cinnamon and amber. A gourmand French niche with huge projection.",
+      "es": "Vainilla cremosa, canela y ámbar. Nicho francés goloso de proyección enorme."
+    },
+    "notes": {
+      "top": {
+        "en": "Bergamot · cinnamon",
+        "es": "Bergamota · canela"
+      },
+      "heart": {
+        "en": "Vanilla",
+        "es": "Vainilla"
+      },
+      "base": {
+        "en": "Amber · woods · vanillin",
+        "es": "Ámbar · maderas · vainillina"
+      }
+    }
+  },
+  {
+    "id": "le-male-elixir",
+    "name": "Le Male Elixir",
+    "brand": "Jean Paul Gaultier",
+    "category": "night",
+    "tag": null,
+    "tone": "bronce",
+    "image": "/perfumes/le-male-elixir-1.webp",
+    "gallery": [
+      "/perfumes/le-male-elixir-1.webp",
+      "/perfumes/le-male-elixir-2.webp",
+      "/perfumes/le-male-elixir-3.webp"
+    ],
+    "price": 125,
+    "rating": 4.7,
+    "reviews": 203,
+    "isBest": true,
+    "desc": {
+      "en": "Lavender and mint falling into vanilla, honey and tobacco. One of the sweetest Le Males.",
+      "es": "Lavanda y menta que caen en vainilla, miel y tabaco. Uno de los más golosos de Le Male."
+    },
+    "notes": {
+      "top": {
+        "en": "Lavender · mint",
+        "es": "Lavanda · menta"
+      },
+      "heart": {
+        "en": "Vanilla · benzoin",
+        "es": "Vainilla · benjuí"
+      },
+      "base": {
+        "en": "Honey · tonka bean · tobacco",
+        "es": "Miel · haba tonka · tabaco"
+      }
+    }
+  },
+  {
+    "id": "khamrah",
+    "name": "Khamrah",
+    "brand": "Lattafa",
+    "category": "night",
+    "tag": null,
+    "tone": "bronce",
+    "image": "/perfumes/khamrah-1.webp",
+    "gallery": [
+      "/perfumes/khamrah-1.webp",
+      "/perfumes/khamrah-2.webp",
+      "/perfumes/khamrah-3.webp"
+    ],
+    "price": 85,
+    "oldPrice": 110,
+    "rating": 4.8,
+    "reviews": 321,
+    "isBest": true,
+    "desc": {
+      "en": "Dates, praline and spices over vanilla and amber. A long-lasting oriental gourmand.",
+      "es": "Dátiles, praliné y especias sobre vainilla y ámbar. Oriental gourmand de gran duración."
+    },
+    "notes": {
+      "top": {
+        "en": "Cinnamon · nutmeg · bergamot",
+        "es": "Canela · nuez moscada · bergamota"
+      },
+      "heart": {
+        "en": "Dates · praline · tuberose",
+        "es": "Dátiles · praliné · nardo"
+      },
+      "base": {
+        "en": "Vanilla · tonka bean · amber · myrrh",
+        "es": "Vainilla · haba tonka · ámbar · mirra"
+      }
+    }
+  },
+  {
+    "id": "stronger-with-you-intense",
+    "name": "Stronger With You Intensely",
+    "brand": "Emporio Armani",
+    "category": "night",
+    "tag": null,
+    "tone": "bronce",
+    "image": "/perfumes/stronger-with-you-intense-1.webp",
+    "gallery": [
+      "/perfumes/stronger-with-you-intense-1.webp",
+      "/perfumes/stronger-with-you-intense-2.webp",
+      "/perfumes/stronger-with-you-intense-3.webp"
+    ],
+    "price": 90,
+    "oldPrice": 115,
+    "rating": 4.6,
+    "reviews": 158,
+    "desc": {
+      "en": "Pink pepper, toffee and cinnamon over vanilla and amber. Sweet and warm, a compliment magnet.",
+      "es": "Pimienta rosa, toffee y canela sobre vainilla y ámbar. Dulce y cálido, imán de cumplidos."
+    },
+    "notes": {
+      "top": {
+        "en": "Pink pepper · juniper · violet",
+        "es": "Pimienta rosa · enebro · violeta"
+      },
+      "heart": {
+        "en": "Toffee · cinnamon · lavender · sage",
+        "es": "Toffee · canela · lavanda · salvia"
+      },
+      "base": {
+        "en": "Vanilla · amber · tonka bean · suede",
+        "es": "Vainilla · ámbar · haba tonka · ante"
+      }
+    }
+  },
+  {
+    "id": "pure-xs-night",
+    "name": "Pure XS Night",
+    "brand": "Paco Rabanne",
+    "category": "special",
+    "tag": null,
+    "tone": "cian",
+    "image": "/perfumes/pure-xs-night-1.webp",
+    "gallery": [
+      "/perfumes/pure-xs-night-1.webp",
+      "/perfumes/pure-xs-night-2.webp",
+      "/perfumes/pure-xs-night-3.webp"
+    ],
+    "price": 120,
+    "rating": 4.5,
+    "reviews": 97,
+    "desc": {
+      "en": "Ginger, cocoa and cinnamon over caramel and myrrh. A nuclear-projection night gourmand.",
+      "es": "Jengibre, cacao y canela sobre caramelo y mirra. Gourmand nocturno de proyección nuclear."
+    },
+    "notes": {
+      "top": {
+        "en": "Ginseng · ginger",
+        "es": "Ginseng · jengibre"
+      },
+      "heart": {
+        "en": "Cocoa · vanilla · cinnamon",
+        "es": "Cacao · vainilla · canela"
+      },
+      "base": {
+        "en": "Caramel · myrrh",
+        "es": "Caramelo · mirra"
+      }
+    }
+  },
+  {
+    "id": "reserve-privee",
+    "name": "Gentleman Réserve Privée",
+    "brand": "Givenchy",
+    "category": "special",
+    "tag": null,
+    "tone": "bronce",
+    "image": "/perfumes/reserve-privee-1.webp",
+    "gallery": [
+      "/perfumes/reserve-privee-1.webp",
+      "/perfumes/reserve-privee-2.webp",
+      "/perfumes/reserve-privee-3.webp"
+    ],
+    "price": 100,
+    "oldPrice": 130,
+    "rating": 4.6,
+    "reviews": 84,
+    "desc": {
+      "en": "Iris, chestnut and a whiskey accord. A boozy woody — elegant and full of character.",
+      "es": "Iris, castaña y un acorde de whisky. Amaderado boozy, elegante y con personalidad."
+    },
+    "notes": {
+      "top": {
+        "en": "Bergamot",
+        "es": "Bergamota"
+      },
+      "heart": {
+        "en": "Iris · chestnut",
+        "es": "Iris · castaña"
+      },
+      "base": {
+        "en": "Amber · whiskey · woods",
+        "es": "Ámbar · whisky · maderas"
+      }
+    }
+  },
+  {
+    "id": "9pm",
+    "name": "9PM",
+    "brand": "Afnan",
+    "category": "special",
+    "tag": null,
+    "tone": "titanio",
+    "image": "/perfumes/9pm-1.webp",
+    "gallery": [
+      "/perfumes/9pm-1.webp",
+      "/perfumes/9pm-2.webp",
+      "/perfumes/9pm-3.webp"
+    ],
+    "price": 80,
+    "oldPrice": 100,
+    "rating": 4.7,
+    "reviews": 289,
+    "isBest": true,
+    "desc": {
+      "en": "Fruity bergamot, lavender and vanilla. Sweet and warm — unbeatable value for money.",
+      "es": "Bergamota afrutada, lavanda y vainilla. Dulce y cálido, la mejor relación calidad-precio."
+    },
+    "notes": {
+      "top": {
+        "en": "Apple · bergamot",
+        "es": "Manzana · bergamota"
+      },
+      "heart": {
+        "en": "Lavender · orange blossom · cinnamon",
+        "es": "Lavanda · azahar · canela"
+      },
+      "base": {
+        "en": "Vanilla · tonka bean · amber",
+        "es": "Vainilla · haba tonka · ámbar"
+      }
+    }
+  },
+  {
+    "id": "naxos",
+    "name": "Naxos",
+    "brand": "Xerjoff",
+    "category": "special",
+    "tag": "niche",
+    "tone": "bronce",
+    "image": "/perfumes/naxos-1.webp",
+    "gallery": [
+      "/perfumes/naxos-1.webp",
+      "/perfumes/naxos-2.webp",
+      "/perfumes/naxos-3.webp"
+    ],
+    "price": 70,
+    "oldPrice": 95,
+    "rating": 4.8,
+    "reviews": 141,
+    "desc": {
+      "en": "Honey, cinnamon and tobacco over lavender and bergamot. A niche fougère, the Italian jewel.",
+      "es": "Miel, canela y tabaco sobre lavanda y bergamota. Fougère nicho, la joya italiana."
+    },
+    "notes": {
+      "top": {
+        "en": "Bergamot · lavender · lemon",
+        "es": "Bergamota · lavanda · limón"
+      },
+      "heart": {
+        "en": "Honey · cinnamon · cashmeran",
+        "es": "Miel · canela · cashmeran"
+      },
+      "base": {
+        "en": "Tobacco · vanilla · tonka bean",
+        "es": "Tabaco · vainilla · haba tonka"
+      }
+    }
+  },
+  {
+    "id": "cobalt-elixir",
+    "name": "Bad Boy Cobalt Elixir",
+    "brand": "Carolina Herrera",
+    "category": "special",
+    "tag": null,
+    "tone": "cian",
+    "image": "/perfumes/cobalt-elixir-1.webp",
+    "gallery": [
+      "/perfumes/cobalt-elixir-1.webp",
+      "/perfumes/cobalt-elixir-2.webp",
+      "/perfumes/cobalt-elixir-3.webp"
+    ],
+    "price": 120,
+    "rating": 4.5,
+    "reviews": 66,
+    "isNew": true,
+    "desc": {
+      "en": "Black pepper, truffle and resinous wood over vanilla and incense. Earthy and magnetic.",
+      "es": "Pimienta negra, trufa y madera resinosa sobre vainilla e incienso. Terroso y magnético."
+    },
+    "notes": {
+      "top": {
+        "en": "Black pepper · sage",
+        "es": "Pimienta negra · salvia"
+      },
+      "heart": {
+        "en": "Truffle · woody notes",
+        "es": "Trufa · notas amaderadas"
+      },
+      "base": {
+        "en": "Vanilla · incense",
+        "es": "Vainilla · incienso"
+      }
+    }
+  }
+]
