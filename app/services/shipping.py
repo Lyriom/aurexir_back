@@ -12,5 +12,5 @@ def compute_shipping(subtotal: Decimal, method: str) -> Decimal:
     settings = get_settings()
     if subtotal >= settings.free_shipping_threshold:
         return Decimal("0.00")
-    rate = settings.shipping_standard if method == "standard" else settings.shipping_express
+    rate = settings.shipping_standard if method == "standard" else settings.shipping_eco
     return rate.quantize(TWO_PLACES)

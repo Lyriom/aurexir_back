@@ -15,7 +15,7 @@ from app.models import Order, Product
 
 logger = logging.getLogger(__name__)
 
-SHIPPING_LABELS = {"standard": "Standard (3-5 días)", "express": "Express (1-2 días)"}
+SHIPPING_LABELS = {"standard": "Standard (3-5 days)", "eco": "Eco-friendly (3-7 days)"}
 
 
 def to_cents(amount: Decimal) -> int:

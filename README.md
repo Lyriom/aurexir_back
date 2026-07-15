@@ -79,7 +79,7 @@ ruff check . && ruff format --check .
 | GET | `/auth/me` | Usuario actual (Bearer) |
 | GET | `/products` | Catálogo activo (forma idéntica a `products.js` del front) |
 | GET | `/products/{slug}` | Detalle de producto |
-| POST | `/shipping/quote` | `{items, zip, method}` → subtotal, envío y total estimado |
+| POST | `/shipping/quote` | `{items, method}` → subtotal, envío y total estimado |
 | POST | `/newsletter` | Alta idempotente (201 nueva, 200 repetida); genera un código de 15% (uno por email) y lo envía vía Resend |
 | POST | `/discounts/validate` | `{code}` → `{valid, code, percent}` (siempre 200) |
 | GET | `/health` | Healthcheck |
@@ -110,9 +110,10 @@ ruff check . && ruff format --check .
 
 - **Precios**: el cliente envía solo `{id, qty}`; los importes salen siempre de
   la base de datos y van a Stripe en centavos (USD).
-- **Envío** (solo EE. UU.): gratis si subtotal ≥ `FREE_SHIPPING_THRESHOLD`
-  ($200); si no, `standard` $6.95 o `express` $14.95. La misma función
-  (`app/services/shipping.py`) alimenta el quote y la Checkout Session.
+- **Envío** (solo EE. UU., tarifa plana sin ZIP): gratis si subtotal ≥
+  `FREE_SHIPPING_THRESHOLD` ($200); si no, `standard` $20 o `eco` $30 (envío
+  ecológico). La misma función (`app/services/shipping.py`) alimenta el quote
+  y la Checkout Session.
 - **Stock**: se valida al crear la sesión pero se descuenta **solo** cuando el
   webhook confirma el pago. Todo cambio pasa por `app/services/inventory.py` y
   deja un `InventoryMovement` (`sale | restock | manual | cancel`).

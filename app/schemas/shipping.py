@@ -4,12 +4,11 @@ from pydantic import BaseModel, Field
 
 from app.schemas.cart import CartItemIn
 
-ShippingMethod = Literal["standard", "express"]
+ShippingMethod = Literal["standard", "eco"]
 
 
 class ShippingQuoteIn(BaseModel):
     items: list[CartItemIn] = Field(min_length=1)
-    zip: str = Field(pattern=r"^\d{5}$", description="ZIP de EE. UU. (5 dígitos)")
     method: ShippingMethod = "standard"
 
 

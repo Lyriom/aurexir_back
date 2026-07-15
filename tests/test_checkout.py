@@ -55,13 +55,13 @@ def test_checkout_bajo_umbral_cobra_envio(client, products, customer_headers, db
     monkeypatch.setattr(
         stripe_service.stripe.checkout.Session, "create", lambda **kw: fake_session()
     )
-    body = dict(CHECKOUT_BODY, items=[{"id": "naxos", "qty": 1}], shipping_method="express")
+    body = dict(CHECKOUT_BODY, items=[{"id": "naxos", "qty": 1}], shipping_method="eco")
     res = client.post("/checkout/session", json=body, headers=customer_headers)
     assert res.status_code == 200
     order = db.query(Order).one()
     assert float(order.subtotal) == 70.00
-    assert float(order.shipping_cost) == 14.95
-    assert float(order.total) == 84.95
+    assert float(order.shipping_cost) == 30.00
+    assert float(order.total) == 100.00
 
 
 def test_checkout_sin_stock_da_409_con_detalle(client, products, customer_headers, db):

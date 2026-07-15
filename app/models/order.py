@@ -37,7 +37,7 @@ class Order(Base):
     shipping_cost: Mapped[Decimal] = mapped_column(Numeric(10, 2))
     tax: Mapped[Decimal] = mapped_column(Numeric(10, 2), default=Decimal("0"))
     total: Mapped[Decimal] = mapped_column(Numeric(10, 2))
-    shipping_method: Mapped[str] = mapped_column(String(20))  # standard | express
+    shipping_method: Mapped[str] = mapped_column(String(20))  # standard | eco
     shipping_address: Mapped[dict | None] = mapped_column(JSON)
     stripe_session_id: Mapped[str | None] = mapped_column(String(255), index=True)
     stripe_payment_intent: Mapped[str | None] = mapped_column(String(255))

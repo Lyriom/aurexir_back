@@ -28,10 +28,10 @@ class Settings(BaseSettings):
 
     frontend_origin: str = "http://localhost:5173"
 
-    # Envíos (solo EE. UU.)
+    # Envíos (solo EE. UU.): tarifa plana, sin cálculo por ZIP.
     free_shipping_threshold: Decimal = Decimal("200")
-    shipping_standard: Decimal = Decimal("6.95")
-    shipping_express: Decimal = Decimal("14.95")
+    shipping_standard: Decimal = Decimal("20")
+    shipping_eco: Decimal = Decimal("30")  # envío ecológico (carbono neutro)
 
     # Umbral para el aviso de bajo stock en métricas de admin
     low_stock_threshold: int = 5
