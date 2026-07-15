@@ -33,6 +33,8 @@ class OrderOut(BaseModel):
     number: str
     status: str
     subtotal: float
+    discount_code: str | None = None
+    discount_amount: float
     shipping_cost: float
     tax: float
     total: float
@@ -48,6 +50,8 @@ class OrderOut(BaseModel):
             number=order.number,
             status=order.status,
             subtotal=float(order.subtotal),
+            discount_code=order.discount_code,
+            discount_amount=float(order.discount_amount),
             shipping_cost=float(order.shipping_cost),
             tax=float(order.tax),
             total=float(order.total),

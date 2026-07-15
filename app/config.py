@@ -20,6 +20,12 @@ class Settings(BaseSettings):
     stripe_secret_key: str = ""
     stripe_webhook_secret: str = ""
 
+    # Resend (envío de correos). Con la key vacía el envío se omite (no-op).
+    resend_api_key: str = ""
+    # Hasta verificar el dominio en Resend solo puede ser onboarding@resend.dev.
+    email_from: str = "AUREXIR <onboarding@resend.dev>"
+    newsletter_discount_percent: int = 15
+
     frontend_origin: str = "http://localhost:5173"
 
     # Envíos (solo EE. UU.)

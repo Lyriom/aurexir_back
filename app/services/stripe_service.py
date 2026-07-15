@@ -30,6 +30,7 @@ def create_checkout_session(
     success_url: str,
     cancel_url: str,
     customer_email: str,
+    discount_percent: int | None = None,
 ) -> stripe.checkout.Session:
     settings = get_settings()
     stripe.api_key = settings.stripe_secret_key
@@ -69,6 +70,14 @@ def create_checkout_session(
         # Stripe Tax calcula el sales tax por estado (registro en NY).
         "automatic_tax": {"enabled": True},
     }
+
+    if discount_percent:
+        # Los cupones porcentuales de Stripe no descuentan el envío: coincide
+        # con el cálculo local (descuento solo sobre el subtotal).
+        coupon = stripe.Coupon.create(
+            percent_off=discount_percent, duration="once", name=f"AUREXIR -{discount_percent}%"
+        )
+        params["discounts"] = [{"coupon": coupon.id}]
 
     try:
         return stripe.checkout.Session.create(**params)

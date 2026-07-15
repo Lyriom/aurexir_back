@@ -11,6 +11,7 @@ from app.routers import (
     admin,
     auth,
     checkout,
+    discounts,
     newsletter,
     orders,
     products,
@@ -41,6 +42,7 @@ def create_app() -> FastAPI:
     app.include_router(checkout.router)
     app.include_router(orders.router)
     app.include_router(newsletter.router)
+    app.include_router(discounts.router)
     app.include_router(admin.router)
     app.include_router(webhooks.router)
 

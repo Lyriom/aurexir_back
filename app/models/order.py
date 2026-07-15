@@ -32,6 +32,8 @@ class Order(Base):
     user_id: Mapped[str] = mapped_column(ForeignKey("users.id"), index=True)
     status: Mapped[str] = mapped_column(String(20), default="pending")
     subtotal: Mapped[Decimal] = mapped_column(Numeric(10, 2))
+    discount_code: Mapped[str | None] = mapped_column(String(20))
+    discount_amount: Mapped[Decimal] = mapped_column(Numeric(10, 2), default=Decimal("0"))
     shipping_cost: Mapped[Decimal] = mapped_column(Numeric(10, 2))
     tax: Mapped[Decimal] = mapped_column(Numeric(10, 2), default=Decimal("0"))
     total: Mapped[Decimal] = mapped_column(Numeric(10, 2))

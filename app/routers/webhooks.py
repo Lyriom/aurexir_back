@@ -16,7 +16,8 @@ from sqlalchemy.orm import Session
 
 from app.config import get_settings
 from app.database import get_db
-from app.models import Order
+from app.models import DiscountCode, Order
+from app.models.base import utcnow
 from app.services.inventory import deduct_for_order
 
 logger = logging.getLogger(__name__)
@@ -58,6 +59,15 @@ def _handle_completed(db: Session, session: dict) -> None:
         order.shipping_address = shipping_details
 
     deduct_for_order(db, order)
+
+    # El código de descuento se consume solo con el pago confirmado.
+    if order.discount_code:
+        discount = db.scalar(
+            select(DiscountCode).where(DiscountCode.code == order.discount_code)
+        )
+        if discount is not None and discount.used_at is None:
+            discount.used_at = utcnow()
+            discount.order_id = order.id
 
 
 def _handle_expired(db: Session, session: dict) -> None:

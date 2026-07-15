@@ -12,6 +12,7 @@ os.environ["ADMIN_EMAIL"] = "admin@aurexir.com"
 os.environ["ADMIN_PASSWORD"] = "admin-password-test"
 os.environ["STRIPE_SECRET_KEY"] = "sk_test_dummy"
 os.environ["STRIPE_WEBHOOK_SECRET"] = "whsec_test_dummy"
+os.environ["RESEND_API_KEY"] = ""  # sin key el envío es no-op: ningún test manda correos
 os.environ["FREE_SHIPPING_THRESHOLD"] = "200"
 os.environ["SHIPPING_STANDARD"] = "6.95"
 os.environ["SHIPPING_EXPRESS"] = "14.95"

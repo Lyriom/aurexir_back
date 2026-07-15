@@ -16,6 +16,7 @@ dependencies = [
     "passlib[argon2]>=1.7.4",
     "stripe>=10.0",
     "slowapi>=0.1.9",
+    "resend>=2.0",
 ]
 
 [project.optional-dependencies]

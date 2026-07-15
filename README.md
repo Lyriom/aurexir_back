@@ -80,13 +80,14 @@ ruff check . && ruff format --check .
 | GET | `/products` | Catálogo activo (forma idéntica a `products.js` del front) |
 | GET | `/products/{slug}` | Detalle de producto |
 | POST | `/shipping/quote` | `{items, zip, method}` → subtotal, envío y total estimado |
-| POST | `/newsletter` | Alta idempotente (201 nueva, 200 repetida) |
+| POST | `/newsletter` | Alta idempotente (201 nueva, 200 repetida); genera un código de 15% (uno por email) y lo envía vía Resend |
+| POST | `/discounts/validate` | `{code}` → `{valid, code, percent}` (siempre 200) |
 | GET | `/health` | Healthcheck |
 
 ### Cliente autenticado
 | Método | Ruta | Descripción |
 |---|---|---|
-| POST | `/checkout/session` | Crea Order `pending` + Stripe Checkout → `{checkout_url}` |
+| POST | `/checkout/session` | Crea Order `pending` + Stripe Checkout → `{checkout_url}`; acepta `discount_code` (15% sobre el subtotal, cupón en Stripe; el webhook lo consume al pagar) |
 | GET | `/orders/mine` | Historial propio con items, más reciente primero |
 
 ### Webhook
