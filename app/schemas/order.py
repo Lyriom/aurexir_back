@@ -1,7 +1,7 @@
 from datetime import datetime
 from typing import Literal
 
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 from app.models import Order, OrderItem
 from app.schemas.auth import UserOut
@@ -40,6 +40,9 @@ class OrderOut(BaseModel):
     total: float
     shipping_method: str
     shipping_address: dict | None = None
+    tracking_number: str | None = None
+    tracking_carrier: str | None = None
+    tracking_url: str | None = None
     created_at: datetime
     items: list[OrderItemOut]
 
@@ -57,6 +60,9 @@ class OrderOut(BaseModel):
             total=float(order.total),
             shipping_method=order.shipping_method,
             shipping_address=order.shipping_address,
+            tracking_number=order.tracking_number,
+            tracking_carrier=order.tracking_carrier,
+            tracking_url=order.tracking_url,
             created_at=order.created_at,
             items=[OrderItemOut.from_model(i) for i in order.items],
         )
@@ -73,3 +79,9 @@ class OrderAdminOut(OrderOut):
 
 class OrderStatusIn(BaseModel):
     status: Literal["paid", "shipped", "delivered", "canceled"]
+
+
+class OrderTrackingIn(BaseModel):
+    tracking_number: str = Field(min_length=3, max_length=100)
+    tracking_carrier: str | None = Field(default=None, max_length=60)
+    tracking_url: str | None = Field(default=None, max_length=500, pattern=r"^https?://")

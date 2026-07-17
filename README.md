@@ -101,6 +101,7 @@ ruff check . && ruff format --check .
 | GET | `/admin/metrics?days=30` | Ingresos, nº pedidos, AOV, serie por día, top productos, bajo stock, clientes nuevos |
 | GET | `/admin/orders?status=` | Todos los pedidos, filtrables |
 | PATCH | `/admin/orders/{id}` | Cambio de estado (paid→shipped→delivered; cancelar repone stock) |
+| PATCH | `/admin/orders/{id}/tracking` | `{tracking_number, carrier?, url?}` → guarda el seguimiento, pasa el pedido a `shipped` y avisa al cliente por correo |
 | GET | `/admin/products` | Catálogo completo, incluidos inactivos |
 | POST | `/admin/products` | Crear producto |
 | PATCH | `/admin/products/{id}` | Editar campos (acepta uuid o slug) |
@@ -119,6 +120,11 @@ ruff check . && ruff format --check .
   deja un `InventoryMovement` (`sale | restock | manual | cancel`).
 - **Invitados**: el catálogo, el quote y la newsletter son públicos; solo
   `/checkout/session` y `/orders/mine` requieren sesión.
+- **Correos** (`app/services/email.py`, vía Resend): código de descuento al
+  suscribirse, confirmación de compra al confirmar el pago (webhook, "envío en
+  3-5 días laborables") y aviso de envío cuando el admin sube el tracking. Todos
+  best-effort: si Resend falla, la operación de negocio no se revierte. El idioma
+  sale de `Order.locale` (lo envía el front en el checkout).
 
 ## Estructura
 

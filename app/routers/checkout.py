@@ -64,6 +64,7 @@ def create_checkout_session(payload: CheckoutIn, user: CurrentUser, db: DbDep) -
         tax=Decimal("0.00"),  # el impuesto final lo reporta el webhook (Stripe Tax)
         total=subtotal - discount_amount + shipping_cost,
         shipping_method=payload.shipping_method,
+        locale=payload.locale,
         items=[
             OrderItem(
                 product_id=product.id,

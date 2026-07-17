@@ -18,6 +18,7 @@ from app.config import get_settings
 from app.database import get_db
 from app.models import DiscountCode, Order
 from app.models.base import utcnow
+from app.services import email as email_service
 from app.services.inventory import deduct_for_order
 
 logger = logging.getLogger(__name__)
@@ -68,6 +69,9 @@ def _handle_completed(db: Session, session: dict) -> None:
         if discount is not None and discount.used_at is None:
             discount.used_at = utcnow()
             discount.order_id = order.id
+
+    # Confirmación de compra (best-effort: un fallo de email no revierte el pago).
+    email_service.send_order_confirmation(order.user.email, order)
 
 
 def _handle_expired(db: Session, session: dict) -> None:

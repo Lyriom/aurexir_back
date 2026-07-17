@@ -15,9 +15,10 @@ from app.models import (
     OrderItem,
     Product,
 )
-from app.schemas.order import OrderAdminOut, OrderStatusIn
+from app.schemas.order import OrderAdminOut, OrderStatusIn, OrderTrackingIn
 from app.schemas.product import ProductAdminOut, ProductCreateIn, ProductUpdateIn, StockUpdateIn
 from app.security import AdminUser
+from app.services import email as email_service
 from app.services.inventory import apply_movement, deduct_for_order, restock_for_order
 from app.services.metrics import compute_metrics
 
@@ -79,6 +80,40 @@ def update_order_status(
         deduct_for_order(db, order)
 
     db.commit()
+    return OrderAdminOut.from_model(order)
+
+
+@router.patch("/orders/{order_id}/tracking", response_model=OrderAdminOut)
+def set_order_tracking(
+    order_id: str, payload: OrderTrackingIn, admin: AdminUser, db: DbDep
+) -> OrderAdminOut:
+    """Guarda el código de seguimiento, marca el pedido como enviado y avisa al cliente.
+
+    Solo válido sobre pedidos pagados o ya enviados (actualizar el tracking).
+    Al guardarlo, un pedido `paid` pasa a `shipped` y se envía el correo con el
+    número de seguimiento (best-effort).
+    """
+    order = db.get(Order, order_id)
+    if order is None:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Pedido no encontrado")
+
+    if order.status not in ("paid", "shipped"):
+        raise HTTPException(
+            status_code=status.HTTP_409_CONFLICT,
+            detail=(
+                "Solo se añade seguimiento a un pedido pagado o enviado "
+                f"(actual: {order.status})"
+            ),
+        )
+
+    order.tracking_number = payload.tracking_number.strip()
+    order.tracking_carrier = payload.tracking_carrier
+    order.tracking_url = payload.tracking_url
+    if order.status == "paid":
+        order.status = "shipped"
+
+    db.commit()
+    email_service.send_tracking_email(order.user.email, order)
     return OrderAdminOut.from_model(order)
 
 

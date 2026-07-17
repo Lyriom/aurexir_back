@@ -39,6 +39,10 @@ class Order(Base):
     total: Mapped[Decimal] = mapped_column(Numeric(10, 2))
     shipping_method: Mapped[str] = mapped_column(String(20))  # standard | eco
     shipping_address: Mapped[dict | None] = mapped_column(JSON)
+    locale: Mapped[str] = mapped_column(String(5), default="en")  # idioma de los correos
+    tracking_number: Mapped[str | None] = mapped_column(String(100))
+    tracking_carrier: Mapped[str | None] = mapped_column(String(60))
+    tracking_url: Mapped[str | None] = mapped_column(String(500))
     stripe_session_id: Mapped[str | None] = mapped_column(String(255), index=True)
     stripe_payment_intent: Mapped[str | None] = mapped_column(String(255))
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)

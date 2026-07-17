@@ -8,6 +8,7 @@ class CheckoutIn(BaseModel):
     items: list[CartItemIn] = Field(min_length=1)
     shipping_method: ShippingMethod = "standard"
     discount_code: str | None = Field(default=None, max_length=40)
+    locale: str = Field(default="en", pattern=r"^[a-z]{2}$")
     success_url: str = Field(pattern=r"^https?://")
     cancel_url: str = Field(pattern=r"^https?://")
 
