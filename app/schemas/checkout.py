@@ -5,7 +5,7 @@ from app.schemas.shipping import ShippingMethod
 
 
 class CheckoutIn(BaseModel):
-    items: list[CartItemIn] = Field(min_length=1)
+    items: list[CartItemIn] = Field(min_length=1, max_length=50)
     shipping_method: ShippingMethod = "standard"
     discount_code: str | None = Field(default=None, max_length=40)
     locale: str = Field(default="en", pattern=r"^[a-z]{2}$")

@@ -28,6 +28,41 @@ def _rate_limit_handler(request: Request, exc: RateLimitExceeded) -> JSONRespons
     )
 
 
+# Cabeceras que se añaden a TODAS las respuestas. Es una API JSON (no sirve HTML),
+# así que la CSP más restrictiva es segura y bloquea cualquier intento de embeber.
+_SECURITY_HEADERS = {
+    "X-Content-Type-Options": "nosniff",
+    "X-Frame-Options": "DENY",
+    "Referrer-Policy": "strict-origin-when-cross-origin",
+    "Strict-Transport-Security": "max-age=63072000; includeSubDomains",
+    "Content-Security-Policy": "default-src 'none'; frame-ancestors 'none'",
+    "Permissions-Policy": "geolocation=(), microphone=(), camera=()",
+    "Cache-Control": "no-store",
+}
+
+
+def _add_security_middleware(app: FastAPI) -> None:
+    @app.middleware("http")
+    async def security_layer(request: Request, call_next):
+        # Rechaza cuerpos gigantes antes de bufferizarlos (anti-DoS de memoria).
+        content_length = request.headers.get("content-length")
+        if content_length is not None:
+            try:
+                if int(content_length) > get_settings().max_body_bytes:
+                    return JSONResponse(
+                        status_code=413,
+                        content={"detail": "Cuerpo de la petición demasiado grande"},
+                    )
+            except ValueError:
+                return JSONResponse(
+                    status_code=400, content={"detail": "Content-Length inválido"}
+                )
+        response = await call_next(request)
+        for header, value in _SECURITY_HEADERS.items():
+            response.headers.setdefault(header, value)
+        return response
+
+
 def create_app() -> FastAPI:
     settings = get_settings()
     app = FastAPI(title="AUREXIR API", version="0.1.0")
@@ -35,13 +70,15 @@ def create_app() -> FastAPI:
     app.state.limiter = limiter
     app.add_exception_handler(RateLimitExceeded, _rate_limit_handler)
 
+    _add_security_middleware(app)
+
     allowed_origins = {settings.frontend_origin, "https://aurexir.com", "https://www.aurexir.com"}
     app.add_middleware(
         CORSMiddleware,
         allow_origins=sorted(allowed_origins),
         allow_credentials=True,
-        allow_methods=["*"],
-        allow_headers=["*"],
+        allow_methods=["GET", "POST", "PATCH", "OPTIONS"],
+        allow_headers=["Authorization", "Content-Type"],
     )
 
     app.include_router(auth.router)

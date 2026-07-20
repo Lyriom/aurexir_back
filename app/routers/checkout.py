@@ -5,6 +5,7 @@ import stripe
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
 
+from app.config import get_settings
 from app.database import get_db
 from app.models import Order, OrderItem
 from app.schemas.checkout import CheckoutIn, CheckoutOut
@@ -19,8 +20,24 @@ router = APIRouter(prefix="/checkout", tags=["checkout"])
 DbDep = Annotated[Session, Depends(get_db)]
 
 
+def _allowed_return_origins() -> set[str]:
+    return {get_settings().frontend_origin, "https://aurexir.com", "https://www.aurexir.com"}
+
+
+def _validate_return_urls(*urls: str) -> None:
+    """Solo permite volver a orígenes propios (evita open redirect vía Stripe)."""
+    allowed = _allowed_return_origins()
+    for url in urls:
+        if not any(url == origin or url.startswith(origin + "/") for origin in allowed):
+            raise HTTPException(
+                status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
+                detail="success_url/cancel_url deben apuntar al sitio de AUREXIR",
+            )
+
+
 @router.post("/session", response_model=CheckoutOut)
 def create_checkout_session(payload: CheckoutIn, user: CurrentUser, db: DbDep) -> CheckoutOut:
+    _validate_return_urls(payload.success_url, payload.cancel_url)
     resolved = resolve_items(db, payload.items)
 
     # El stock se valida aquí pero se descuenta SOLO cuando el webhook confirma el pago.

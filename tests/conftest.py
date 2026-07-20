@@ -13,6 +13,8 @@ os.environ["ADMIN_PASSWORD"] = "admin-password-test"
 os.environ["STRIPE_SECRET_KEY"] = "sk_test_dummy"
 os.environ["STRIPE_WEBHOOK_SECRET"] = "whsec_test_dummy"
 os.environ["RESEND_API_KEY"] = ""  # sin key el envío es no-op: ningún test manda correos
+# Fijo para no depender del .env real (el validador de checkout usa este origen).
+os.environ["FRONTEND_ORIGIN"] = "http://localhost:5173"
 os.environ["FREE_SHIPPING_THRESHOLD"] = "200"
 os.environ["SHIPPING_STANDARD"] = "20"
 os.environ["SHIPPING_ECO"] = "30"

@@ -14,13 +14,18 @@ router = APIRouter(prefix="/auth", tags=["auth"])
 
 DbDep = Annotated[Session, Depends(get_db)]
 
+# Hash señuelo: se verifica contra él cuando el email no existe, para que login
+# tarde lo mismo exista o no la cuenta (evita enumerar usuarios por tiempo).
+_DUMMY_HASH = hash_password("constant-time-login-decoy-password")
+
 
 def _token_response(user: User) -> TokenOut:
     return TokenOut(access_token=create_access_token(user), user=UserOut.model_validate(user))
 
 
 @router.post("/register", response_model=TokenOut, status_code=status.HTTP_201_CREATED)
-def register(payload: RegisterIn, db: DbDep) -> TokenOut:
+@limiter.limit("5/minute")
+def register(request: Request, payload: RegisterIn, db: DbDep) -> TokenOut:
     email = payload.email.strip().lower()
     if db.scalar(select(User).where(User.email == email)):
         raise HTTPException(
@@ -42,7 +47,8 @@ def register(payload: RegisterIn, db: DbDep) -> TokenOut:
 def login(request: Request, payload: LoginIn, db: DbDep) -> TokenOut:
     email = payload.email.strip().lower()
     user = db.scalar(select(User).where(User.email == email))
-    if user is None or not verify_password(payload.password, user.password_hash):
+    password_ok = verify_password(payload.password, user.password_hash if user else _DUMMY_HASH)
+    if user is None or not password_ok:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED, detail="Email o contraseña incorrectos"
         )

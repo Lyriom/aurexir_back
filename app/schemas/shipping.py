@@ -8,7 +8,7 @@ ShippingMethod = Literal["standard", "eco"]
 
 
 class ShippingQuoteIn(BaseModel):
-    items: list[CartItemIn] = Field(min_length=1)
+    items: list[CartItemIn] = Field(min_length=1, max_length=50)
     method: ShippingMethod = "standard"
 
 

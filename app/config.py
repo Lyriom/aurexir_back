@@ -3,7 +3,22 @@
 from decimal import Decimal
 from functools import lru_cache
 
+from pydantic import model_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
+
+# Secretos placeholder que NUNCA deben llegar a producción: si el JWT_SECRET es
+# uno de estos (o demasiado corto), la app se niega a arrancar. Un secreto débil
+# hace que cualquiera pueda forjar tokens de admin.
+_INSECURE_JWT_SECRETS = {
+    "dev-secret-cambia-esto",
+    "dev-secret-local-cambia-esto-antes-de-produccion",
+    "cambia-esto",
+    "cambia-esto-por-un-secreto-aleatorio-largo",
+    "change-me",
+    "changeme",
+    "secret",
+}
+_MIN_JWT_SECRET_LEN = 32
 
 
 class Settings(BaseSettings):
@@ -13,6 +28,9 @@ class Settings(BaseSettings):
 
     jwt_secret: str = "dev-secret-cambia-esto"
     jwt_expires_min: int = 10080  # 7 días
+
+    # Tope de tamaño de cuerpo de petición (anti-DoS por payload gigante).
+    max_body_bytes: int = 1_000_000  # 1 MB
 
     admin_email: str = "admin@aurexir.com"
     admin_password: str = "cambia-esto"
@@ -38,6 +56,16 @@ class Settings(BaseSettings):
 
     # Desactivable en tests
     rate_limit_enabled: bool = True
+
+    @model_validator(mode="after")
+    def _reject_insecure_jwt_secret(self) -> "Settings":
+        secret = self.jwt_secret.strip()
+        if secret in _INSECURE_JWT_SECRETS or len(secret) < _MIN_JWT_SECRET_LEN:
+            raise ValueError(
+                "JWT_SECRET inseguro o ausente. Define un valor aleatorio de "
+                f"{_MIN_JWT_SECRET_LEN}+ caracteres, p. ej. `openssl rand -hex 32`."
+            )
+        return self
 
 
 @lru_cache
