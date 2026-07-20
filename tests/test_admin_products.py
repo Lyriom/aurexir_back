@@ -78,17 +78,11 @@ def test_editar_producto_inexistente_da_404(client, products, admin_headers):
     assert res.status_code == 404
 
 
-def test_actualizar_stock_registra_delta(client, products, admin_headers, db):
-    res = client.patch(
-        "/admin/products/khamrah",
-        json={},
-        headers=admin_headers,
-    )
-    assert res.status_code == 200
-
+def test_actualizar_stock_por_delta(client, products, admin_headers, db):
+    # El front manda delta: +15 repone (10 → 25), -20 reduce (25 → 5).
     res = client.patch(
         "/admin/products/khamrah/stock",
-        json={"stock": 25, "reason": "restock"},
+        json={"delta": 15, "reason": "restock"},
         headers=admin_headers,
     )
     assert res.status_code == 200
@@ -96,7 +90,7 @@ def test_actualizar_stock_registra_delta(client, products, admin_headers, db):
 
     res = client.patch(
         "/admin/products/khamrah/stock",
-        json={"stock": 5, "reason": "manual"},
+        json={"delta": -20, "reason": "manual"},
         headers=admin_headers,
     )
     assert res.json()["stock"] == 5
@@ -105,14 +99,25 @@ def test_actualizar_stock_registra_delta(client, products, admin_headers, db):
         (m.delta, m.reason)
         for m in db.query(InventoryMovement).order_by(InventoryMovement.created_at).all()
     ]
-    assert (15, "restock") in deltas  # 10 → 25
-    assert (-20, "manual") in deltas  # 25 → 5
+    assert (15, "restock") in deltas
+    assert (-20, "manual") in deltas
 
 
-def test_stock_negativo_da_422(client, products, admin_headers):
+def test_stock_delta_no_baja_de_cero(client, products, admin_headers, db):
+    # Un delta que dejaría el stock negativo se ajusta a 0 (nunca negativo).
     res = client.patch(
         "/admin/products/khamrah/stock",
-        json={"stock": -1, "reason": "manual"},
+        json={"delta": -999, "reason": "manual"},
+        headers=admin_headers,
+    )
+    assert res.status_code == 200
+    assert res.json()["stock"] == 0
+
+
+def test_stock_delta_no_entero_da_422(client, products, admin_headers):
+    res = client.patch(
+        "/admin/products/khamrah/stock",
+        json={"delta": "cinco", "reason": "manual"},
         headers=admin_headers,
     )
     assert res.status_code == 422

@@ -29,6 +29,7 @@ class ProductOut(BaseModel):
     isNew: bool
     isBest: bool
     stock: int
+    active: bool
 
     @classmethod
     def from_model(cls, p: Product) -> "ProductOut":
@@ -50,6 +51,7 @@ class ProductOut(BaseModel):
             isNew=p.is_new,
             isBest=p.is_best,
             stock=p.stock,
+            active=p.active,
         )
 
 
@@ -57,15 +59,14 @@ class ProductOut(BaseModel):
 
 
 class ProductAdminOut(ProductOut):
-    """Como la vista pública, más los campos internos que ve el admin."""
+    """Como la vista pública (ya incluye `active`), más el uuid interno."""
 
     uuid: str  # id real en base de datos (el PATCH acepta uuid o slug)
-    active: bool
 
     @classmethod
     def from_model(cls, p: Product) -> "ProductAdminOut":
         base = ProductOut.from_model(p)
-        return cls(**base.model_dump(), uuid=p.id, active=p.active)
+        return cls(**base.model_dump(), uuid=p.id)
 
 
 class LocalizedText(BaseModel):
@@ -117,5 +118,7 @@ class ProductUpdateIn(BaseModel):
 
 
 class StockUpdateIn(BaseModel):
-    stock: int = Field(ge=0)
+    """Ajuste de stock por delta (el front manda +N para reponer, -N para reducir)."""
+
+    delta: int = Field(description="Cambio de stock: positivo repone, negativo reduce")
     reason: Literal["restock", "manual"] = "manual"

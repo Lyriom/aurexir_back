@@ -17,5 +17,5 @@ def validate_code(payload: DiscountValidateIn, db: DbDep) -> DiscountValidateOut
     """Para que el front compruebe un código antes del checkout (siempre 200)."""
     discount = discounts.find_valid(db, payload.code)
     if discount is None:
-        return DiscountValidateOut(valid=False)
+        return DiscountValidateOut(valid=False, code=payload.code.strip().upper(), percent=0)
     return DiscountValidateOut(valid=True, code=discount.code, percent=discount.percent)

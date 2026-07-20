@@ -69,13 +69,15 @@ def test_validate_codigo_valido_invalido_y_usado(client, db, monkeypatch):
     assert ok.status_code == 200
     assert ok.json() == {"valid": True, "code": codigo.code, "percent": 15}
 
-    mal = client.post("/discounts/validate", json={"code": "AURX15-NOEXISTE"})
-    assert mal.json() == {"valid": False, "code": None, "percent": None}
+    # Código inexistente: 200 con el código (normalizado) y percent 0, nunca 4xx.
+    mal = client.post("/discounts/validate", json={"code": "aurx15-noexiste"})
+    assert mal.status_code == 200
+    assert mal.json() == {"valid": False, "code": "AURX15-NOEXISTE", "percent": 0}
 
     codigo.used_at = codigo.created_at
     db.commit()
     usado = client.post("/discounts/validate", json={"code": codigo.code})
-    assert usado.json()["valid"] is False
+    assert usado.json() == {"valid": False, "code": codigo.code, "percent": 0}
 
 
 def test_checkout_aplica_15_y_manda_cupon_a_stripe(

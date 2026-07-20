@@ -7,5 +7,5 @@ class DiscountValidateIn(BaseModel):
 
 class DiscountValidateOut(BaseModel):
     valid: bool
-    code: str | None = None
-    percent: int | None = None
+    code: str  # eco del código consultado (normalizado a mayúsculas)
+    percent: int = 0  # 0 cuando el código no es válido

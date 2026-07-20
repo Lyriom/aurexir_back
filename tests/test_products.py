@@ -21,6 +21,7 @@ def test_lista_solo_productos_activos_con_forma_del_front(client, products, db):
     assert khamrah["oldPrice"] == 110
     assert khamrah["isBest"] is True
     assert khamrah["stock"] == 10
+    assert khamrah["active"] is True  # el front lo espera en el catálogo público
     assert khamrah["desc"]["es"].startswith("Dátiles")
     assert khamrah["notes"]["top"]["en"]
 

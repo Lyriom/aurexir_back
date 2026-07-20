@@ -220,7 +220,7 @@ def update_stock(
     product_id: str, payload: StockUpdateIn, admin: AdminUser, db: DbDep
 ) -> ProductAdminOut:
     product = _get_product(db, product_id)
-    delta = payload.stock - product.stock
-    apply_movement(db, product, delta, payload.reason)
+    # apply_movement nunca deja el stock negativo (lo ajusta a 0) y audita el delta.
+    apply_movement(db, product, payload.delta, payload.reason)
     db.commit()
     return ProductAdminOut.from_model(product)
